@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tic toc toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="all">
+      <h1>Tic Tac Toe</h1>
+      <button id="reset" onclick="restartGame()">Reset</button>
+      <section class="container" id="box-container">
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+      </section>
+      <!-- Gameover section  -->
+      <div class="gameover hidden" id="gameover">
+        <h1>Game Over</h1>
+        <h2 id="result">Winner is: <span id="winner">x</span></h2>
+        <div class="">
+          <button id="seeResult" onclick="seResult()">SeeResult</button>
+          <button id="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
