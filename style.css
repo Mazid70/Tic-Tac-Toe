@@ -19,22 +19,50 @@ body {
 }
 
 .box {
+  top: 5px;
   height: 18vmin;
   width: 18vmin;
-  background: #22242a;
-  padding: 0px;
-  border: 2px solid;
-  border-image: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(121, 9, 117, 1) 0%,
-    rgba(40, 155, 179, 1) 100%
-  );
-  border-image-slice: 1;
+  background: #1d1f20;
+  position: relative;
   border-radius: 10px;
+  overflow: hidden;
   font-size: 80px;
   font-weight: bolder;
 }
+
+.box-wrapper {
+  border-radius: 10px;
+  height: 19vmin;
+  width: 19vmin;
+  position: relative;
+  display: inline-block;
+  animation: animatedgradient 3s ease alternate infinite;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 h1 {
   font-size: 40px;
   color: transparent;
@@ -83,11 +111,23 @@ h1 {
   font-weight: bolder;
   color: white;
 }
+#color-text {
+  color: rgba(121, 9, 117, 1);
+}
+P {
+  color: white;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
 @media screen and (max-width: 570px) {
   .box {
     font-size: 50px;
   }
   .gameover {
     padding: 50px;
+  }
+  .box {
+    top: 2px;
   }
 }
