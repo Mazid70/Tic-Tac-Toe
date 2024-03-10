@@ -23,12 +23,10 @@ const winCount = [
   [3, 4, 5],
   [6, 7, 8],
 ];
-let click = 0;
 const startGame = () => {
   allBtn.innerText = "";
   allBtn.forEach((btn) => {
     btn.addEventListener("click", function () {
-      click++;
       console.log("count");
       if (clickO) {
         btn.innerText = "O";
@@ -47,27 +45,19 @@ const startGame = () => {
       }
       btn.disabled = true;
       checkWinner();
-      if (click === 9) {
-        document.getElementById("result").innerText = "Draw";
-        container.classList.add("hidden");
-        gameover.classList.remove("hidden");
-        resetBtn.classList.add("hidden");
-        player.classList.add("hidden");
-        player.innerText = "Draw";
-        player.style.color = "yellow";
-        drawAudio.play();
-      }
     });
   });
 };
 
 const checkWinner = () => {
+  let draw = true;
   for (let count of winCount) {
     let positionOne = allBtn[count[0]].innerText;
     let positionTwo = allBtn[count[1]].innerText;
     let positionThree = allBtn[count[2]].innerText;
-    if (positionOne != "" && positionTwo != "" && positionThree != "") {
+    if (positionOne !== "" && positionTwo !== "" && positionThree !== "") {
       if (positionOne === positionTwo && positionTwo === positionThree) {
+        draw = false;
         winner.innerText = positionOne;
         container.classList.add("hidden");
         resetBtn.classList.add("hidden");
@@ -75,8 +65,21 @@ const checkWinner = () => {
         player.classList.add("hidden");
         findWinner(positionOne);
         winnerAudio.play();
+        return;
       }
+    } else {
+      draw = false;
     }
+  }
+  if (draw) {
+    document.getElementById("result").innerText = "Draw";
+    container.classList.add("hidden");
+    gameover.classList.remove("hidden");
+    resetBtn.classList.add("hidden");
+    player.classList.add("hidden");
+    player.innerText = "Draw";
+    player.style.color = "yellow";
+    drawAudio.play();
   }
 };
 const restartGame = () => {
